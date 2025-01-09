@@ -1,0 +1,1 @@
+# ghostty-theme-sync.nvim
