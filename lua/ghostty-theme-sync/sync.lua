@@ -56,7 +56,7 @@ end
 ---@return table List of colorschemes
 local function get_ghostty_colorschemes()
 	local colorschemes = {}
-	local path = vim.fn.expand("./ghostty_themes.txt")
+	local path = debug.getinfo(1, "S").source:match("@(.*)/") .. "/../../ghostty_themes.txt"
 
 	for line in io.lines(path) do
 		table.insert(colorschemes, line)
