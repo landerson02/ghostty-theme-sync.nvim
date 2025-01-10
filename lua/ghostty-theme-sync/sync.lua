@@ -1,7 +1,8 @@
 local M = {}
 local config = require("ghostty-theme-sync.config").config
 
--- Change nvim colorscheme
+--- Change nvim colorscheme
+--- @param colorscheme string: The colorscheme to set in Neovim
 local function set_nvim_colorscheme(colorscheme)
 	local success, err = pcall(function()
 		vim.cmd("colorscheme " .. colorscheme)
@@ -11,7 +12,8 @@ local function set_nvim_colorscheme(colorscheme)
 	end
 end
 
--- Change Ghostty config file with new theme
+--- Change Ghostty config file with new theme
+--- @param colorscheme string: The colorscheme to set in the ghostty config
 local function set_ghostty_colorscheme(colorscheme)
 	local config_path = vim.fn.expand(config.ghostty_config_path)
 
@@ -37,6 +39,8 @@ local function set_ghostty_colorscheme(colorscheme)
 	file:close()
 end
 
+--- Gets the available colorschemes in Neovim
+--- @return table List of colorschemes
 local function get_nvim_colorschemes()
 	local colorschemes = {}
 	local output = vim.fn.getcompletion("", "color")
@@ -48,6 +52,8 @@ local function get_nvim_colorschemes()
 	return colorschemes
 end
 
+--- Gets the available colorschemes in Neovim
+---@return table List of colorschemes
 local function get_ghostty_colorschemes()
 	local colorschemes = {}
 	local path = vim.fn.expand("./ghostty_themes.txt")
@@ -59,6 +65,8 @@ local function get_ghostty_colorschemes()
 	return colorschemes
 end
 
+--- Get the colorschemes that exist in both Neovim and Ghostty
+--- @return table List of colorschemes that are available in both Neovim and Ghostty
 function M.get_overlap()
 	local nvim_colorschemes = get_nvim_colorschemes()
 	local ghostty_colorschemes = get_ghostty_colorschemes()
@@ -79,11 +87,14 @@ function M.get_overlap()
 	return overlap
 end
 
+--- Set the colorscheme in Neovim and Ghostty
+--- @param colorscheme string: The colorscheme to set in Neovim and Ghostty
 function M.set_colorscheme(colorscheme)
 	set_nvim_colorscheme(colorscheme)
 	set_ghostty_colorscheme(colorscheme)
 end
 
+--- Opens a select menu to pick a theme to sync out of the valid options
 function M.pick_theme()
 	local themes = M.get_overlap()
 
