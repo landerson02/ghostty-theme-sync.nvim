@@ -8,11 +8,10 @@ Use your favorite plugin manager, for example with [lazy.nvim](https://github.co
 ```lua
 {
   'landerson02/ghostty-theme-sync.nvim',
-  config = function()
-    require('ghostty-theme-sync').setup({
-      -- Add your configuration here
-    })
-  end
+  --- @type GhosttySyncConfig
+  opts = {
+    -- Add your configuration here
+  },
 }
 ```
 
@@ -20,15 +19,24 @@ Use your favorite plugin manager, for example with [lazy.nvim](https://github.co
 - Ghostty
 
 ### Usage
-run the command `:GhosttyTheme` to open the theme selection menu.
+Run the command `:GhosttyTheme` to open the theme selection menu.
+
+After selecting a new theme, you will need to refresh your ghostty config with `cmd+shift+,` or `ctrl+shift+,` on MacOS and Linux respectively.
 
 ### Configuration
 The following options are the default:
 > [!NOTE]
-> You will likely need to change your Ghostty config path
+> You may need to change your Ghostty config path
 ```lua
 {
   -- Path to your Ghostty config file
   ghostty_config_path = "~/.config/ghostty/config",
+
+  -- If you want to keep the nvim colorscheme change (like the ghostty change),
+  -- set this to true and point the config path to your config file that contains
+  -- a line of the form: `vim.cmd.colorscheme('<colorscheme>')`
+  -- The plugin will change this line to the selected theme
+  persist_nvim_theme = false,
+  nvim_config_path = "",
 }
 ```
