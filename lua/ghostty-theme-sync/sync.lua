@@ -12,6 +12,37 @@ local function set_nvim_colorscheme(colorscheme)
 	end
 end
 
+--- Change nvim colorscheme permanently
+--- @param colorscheme string: The colorscheme to set in Neovim
+local function persist_nvim_colorscheme(colorscheme)
+	if not config.options.persist_nvim_theme or not config.options.nvim_config_path then
+		error("Please set the nvim config path")
+	end
+
+	local path = vim.fn.expand(config.options.nvim_config_path)
+
+	-- Read in config and update colorscheme line
+	local lines = {}
+	for line in io.lines(path) do
+		if line:match("^%s*vim.cmd.colorscheme") then
+			table.insert(lines, "vim.cmd.colorscheme('" .. colorscheme .. "')")
+		else
+			table.insert(lines, line)
+		end
+	end
+
+	-- Write the new config
+	local file = io.open(path, "w")
+	if not file then
+		error("Failed to open nvim config to write")
+	end
+
+	for _, line in ipairs(lines) do
+		file:write(line .. "\n")
+	end
+	file:close()
+end
+
 --- Change Ghostty config file with new theme
 --- @param colorscheme string: The colorscheme to set in the ghostty config
 local function set_ghostty_colorscheme(colorscheme)
@@ -91,6 +122,9 @@ end
 --- @param colorscheme string: The colorscheme to set in Neovim and Ghostty
 function M.set_colorscheme(colorscheme)
 	set_nvim_colorscheme(colorscheme)
+	if config.options.persist_nvim_theme then
+		persist_nvim_colorscheme(colorscheme)
+	end
 	set_ghostty_colorscheme(colorscheme)
 end
 
