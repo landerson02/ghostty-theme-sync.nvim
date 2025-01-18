@@ -1,1 +1,1 @@
-require("ghostty-theme-sync").setup()
+require("ghostty-theme-sync")

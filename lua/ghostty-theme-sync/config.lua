@@ -6,17 +6,22 @@ local M = {}
 
 --- Default configuration
 --- @type GhosttySyncConfig
-M.config = {
+-- M.config = {
+local defaults = {
 	-- Path to your ghostty config file
 	ghostty_config_path = "~/.config/ghostty/config",
+	nvim_config_path = "",
 }
+
+--- @type GhosttySyncConfig
+M.options = {}
 
 --- Setup function for the plugin
 --- @param opts GhosttySyncConfig
 function M.setup(opts)
-	M.config = vim.tbl_extend("force", M.config, opts or {})
+	M.options = vim.tbl_extend("force", defaults, opts or {})
 
-	if M.config.ghostty_config_path == nil then
+	if M.options.ghostty_config_path == nil then
 		error("You must define a ghostty config path (make sure the file exists)")
 	end
 end

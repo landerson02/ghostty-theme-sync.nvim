@@ -1,5 +1,5 @@
 local M = {}
-local config = require("ghostty-theme-sync.config").config
+local config = require("ghostty-theme-sync.config")
 
 --- Change nvim colorscheme
 --- @param colorscheme string: The colorscheme to set in Neovim
@@ -15,7 +15,7 @@ end
 --- Change Ghostty config file with new theme
 --- @param colorscheme string: The colorscheme to set in the ghostty config
 local function set_ghostty_colorscheme(colorscheme)
-	local config_path = vim.fn.expand(config.ghostty_config_path)
+	local config_path = vim.fn.expand(config.options.ghostty_config_path)
 
 	-- Read in config and update theme line
 	local lines = {}
