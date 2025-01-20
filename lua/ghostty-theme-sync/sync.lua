@@ -1,5 +1,6 @@
 local M = {}
 local config = require("ghostty-theme-sync.config")
+local translations = require("ghostty-theme-sync.translations")
 
 --- Change nvim colorscheme
 --- @param colorscheme string: The colorscheme to set in Neovim
@@ -47,6 +48,9 @@ end
 --- @param colorscheme string: The colorscheme to set in the ghostty config
 local function set_ghostty_colorscheme(colorscheme)
 	local config_path = vim.fn.expand(config.options.ghostty_config_path)
+
+	-- Change colorscheme to ghostty format
+	colorscheme = translations.nvim_to_ghostty[colorscheme] or colorscheme
 
 	-- Read in config and update theme line
 	local lines = {}
@@ -102,16 +106,18 @@ function M.get_overlap()
 	local nvim_colorschemes = get_nvim_colorschemes()
 	local ghostty_colorschemes = get_ghostty_colorschemes()
 
-	local set = {}
+	local map = {}
 	local overlap = {}
 
 	for _, value in ipairs(nvim_colorschemes) do
-		set[value] = true
+		-- Map nvim to ghostty in the table
+		local translated = translations.nvim_to_ghostty[value] or value
+		map[translated] = value
 	end
 
 	for _, value in ipairs(ghostty_colorschemes) do
-		if set[value] then
-			table.insert(overlap, value)
+		if map[value] then
+			table.insert(overlap, map[value])
 		end
 	end
 
