@@ -106,18 +106,20 @@ function M.get_overlap()
 	local nvim_colorschemes = get_nvim_colorschemes()
 	local ghostty_colorschemes = get_ghostty_colorschemes()
 
-	local map = {}
+	-- Create a set of ghostty_colorschemes
+	local ghostty_colorschemes_set = {}
+	for _, value in ipairs(ghostty_colorschemes) do
+		ghostty_colorschemes_set[value] = true
+	end
+
 	local overlap = {}
 
 	for _, value in ipairs(nvim_colorschemes) do
 		-- Map nvim to ghostty in the table
 		local translated = translations.nvim_to_ghostty[value] or value
-		map[translated] = value
-	end
-
-	for _, value in ipairs(ghostty_colorschemes) do
-		if map[value] then
-			table.insert(overlap, map[value])
+		-- Check if ghostty has the colorscheme
+		if ghostty_colorschemes_set[translated] then
+			table.insert(overlap, value)
 		end
 	end
 
