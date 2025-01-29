@@ -25,8 +25,9 @@ local function persist_nvim_colorscheme(colorscheme)
 	-- Read in config and update colorscheme line
 	local lines = {}
 	for line in io.lines(path) do
-		if line:match("^%s*vim.cmd.colorscheme") then
-			table.insert(lines, "vim.cmd.colorscheme('" .. colorscheme .. "')")
+		local leading_whitespace = line:match("^(%s*)vim.cmd.colorscheme")
+		if leading_whitespace then
+			table.insert(lines, leading_whitespace .. "vim.cmd.colorscheme('" .. colorscheme .. "')")
 		else
 			table.insert(lines, line)
 		end
