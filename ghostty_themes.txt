@@ -13,6 +13,7 @@ AlienBlood
 Andromeda
 Apple Classic
 Apple System Colors
+Apple System Colors Light
 arcoiris
 Argonaut
 Arthur
@@ -60,9 +61,13 @@ Chalkboard
 ChallengerDeep
 Chester
 Ciapre
+citruszest
 CLRS
 Cobalt Neon
 Cobalt2
+CobaltNext
+CobaltNext-Dark
+CobaltNext-Minimal
 coffee_theme
 CrayonPonyFish
 CutiePro
@@ -125,6 +130,16 @@ Galaxy
 Galizur
 Github
 GitHub Dark
+GitHub-Dark-Colorblind
+GitHub-Dark-Default
+GitHub-Dark-Dimmed
+GitHub-Dark-High-Contrast
+GitHub-Light-Colorblind
+GitHub-Light-Default
+GitHub-Light-High-Contrast
+GitLab-Dark
+GitLab-Dark-Grey
+GitLab-Light
 Glacier
 Grape
 Grass
@@ -139,6 +154,8 @@ Guezwhoz
 Hacktober
 Hardcore
 Harper
+Havn Daggry
+Havn Skumring
 HaX0R_BLUE
 HaX0R_GR33N
 HaX0R_R3D
@@ -150,6 +167,7 @@ Homebrew
 Hopscotch
 Hopscotch.256
 Horizon
+Horizon-Bright
 Hurtado
 Hybrid
 IC_Green_PPL
@@ -198,6 +216,8 @@ MaterialOcean
 Mathias
 matrix
 Medallion
+Melange_dark
+Melange_light
 Mellifluous
 mellow
 miasma
@@ -231,6 +251,7 @@ niji
 Nocturnal Winter
 nord
 nord-light
+nord-wave
 nordfox
 Novel
 NvimDark
@@ -303,6 +324,8 @@ SpaceGray Eighties Dull
 Spiderman
 Spring
 Square
+Squirrelsong Dark
+srcery
 starlight
 Sublette
 Subliminal
