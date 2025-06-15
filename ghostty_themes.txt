@@ -100,6 +100,7 @@ Duotone Dark
 duskfox
 Earthsong
 electron-highlighter
+Elegant
 Elemental
 Elementary
 embers-dark
@@ -128,6 +129,7 @@ FrontEndDelight
 FunForrest
 Galaxy
 Galizur
+Ghostty Default StyleDark
 Github
 GitHub Dark
 GitHub-Dark-Colorblind
@@ -316,6 +318,7 @@ SoftServer
 Solarized Darcula
 Solarized Dark - Patched
 Solarized Dark Higher Contrast
+solarized-osaka-night
 Spacedust
 SpaceGray
 SpaceGray Bright
